@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github tele</title>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+
+            urlParam = function (name) {
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return results[1] || 0;
+            }
+
+            const id = urlParam("device_id")
+            const text = urlParam("text")
+
+            $.get("https://api.telegram.org/bot5544844179:AAHrP2fWa_kosCxa_FB3jVtKb7Lcafq59bg/sendMessage?chat_id=" +
+                id + "&parse_mode=html&text=" + text,
+                function (results) {
+                    console.log(results);
+                })
+
+        })
+    </script>
+</body>
+
+</html>
